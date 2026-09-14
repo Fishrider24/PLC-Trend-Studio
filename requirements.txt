@@ -1,0 +1,5 @@
+numpy
+pandas
+pyqtgraph
+PyQt6
+pylogix
