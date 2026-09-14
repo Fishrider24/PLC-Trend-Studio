@@ -1,4 +1,4 @@
-# PLC-Trend-Studio
+# PLC Trend Studio V6.3
 PLC Trend Studio is a Windows application for real-time monitoring, trending, and troubleshooting of Allen-Bradley PLCs over Ethernet/IP.
 
 Designed for controls engineers and maintenance technicians, it provides live trending, historical data review, unlimited configurable Y-axes, automatic CSV logging, and workspace management in a lightweight desktop application.
@@ -27,6 +27,7 @@ PLC Trend Studio is built using the following open-source projects:
 - **Pandas** – CSV handling and data processing - [Pandas](https://pandas.pydata.org/)
 
 Special thanks to the developers and contributors of these projects for making them available to the community.
+
 ## Disclaimer
 
 PLC Trend Studio is intended as a diagnostic and troubleshooting tool.
