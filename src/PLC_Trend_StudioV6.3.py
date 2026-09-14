@@ -6,14 +6,12 @@ import User_Interface as ui
 import multiprocessing as mp
 import pandas as pd
 import numpy as np
-#import pyqtgraph as pg
 import sys
 from PyQt6 import QtWidgets, QtCore, QtGui
 from PyQt6.QtGui import QColor
 import pyqtgraph as pg
 import os
 from random import randint
-import pickle
 import json
 from paths import WORKSPACE_PATH, DATA_PATH, REPORT_PATH
 from collections import deque
@@ -86,22 +84,6 @@ def dataWriter(ret, dataFileName):
         #with open(dataFileName[offset], 'a', encoding='UTF8') as f:
         #    writer = csv.writer(f)
         #    writer.writerow(data)
-        offset += 1
-
-def dataPickler(ret, dataFileName):
- 
-    """Takes Takes ret values from PLC comm.Read and dataFileName to write time
-    and data values to the individual Pickle files"""
-    timestamp = time.time()
-    offset = 0
-    for r in ret:
-        if r.Value is True:
-            r.Value = 1
-        elif r.Value is False:
-            r.Value = 0
-        data = [timestamp, r.Value]
-        with open(dataFileName[offset], 'ab+') as f:
-            pickle.dump(data,f)
         offset += 1
 
 class TrendItemSample(pg.graphicsItems.LegendItem.ItemSample):
