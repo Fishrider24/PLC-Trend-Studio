@@ -27,6 +27,10 @@ Release has a packaged .exe using PyInstaller.  Use that or look through the cod
 
 ## Building
 
+Prerequisites
+
+- Python 3.10 or newer
+
 Install the required packages:
 
 ```bash
