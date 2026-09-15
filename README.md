@@ -17,11 +17,11 @@ Features
 
 In Settings, you can adjust scaling for the y-axis and add new PLC tags.  On traces, you can delete tags, change line style, move to different y-axis and hide/show data for tags.
 
-<img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/settings.png" width="200">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/traces.png" width="200">
+<img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/setting.png" width="200">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/trace.png" width="200">
 
 In View, you can change the time window you are in 30secs, 1,2,5,10,30 minutes and 1 hour.  You can drag farther and it will load data from the csv files.  Currently it stores 30 minutes of data in ram.  View also have the toggle for live mode.  Workspace will save the layout (axis, scaling, tags, line format) in a file that is tied to the ip address of the PLC.  Load it in after you start your graph.
 
-<img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/view.png" width="200">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/workspace.png" width="200">
+<img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/views.png" width="200">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/workspaces.png" width="200">
 
 Release has a packaged .exe using PyInstaller.  Use that or look through the code and package yourself.
 
