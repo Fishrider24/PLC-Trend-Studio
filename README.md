@@ -23,6 +23,22 @@ In View, you can change the time window you are in 30secs, 1,2,5,10,30 minutes a
 
 <img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/view.png" width="200">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/workspace.png" width="200">
 
+Release has a packaged .exe using PyInstaller.  Use that or look through the code and package yourself.
+
+## Building
+
+Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+Build the Windows executable:
+
+```bash
+pyinstaller --onefile --console PLC_TrendStudio_V6.3.py
+```
+
 PLC Trend Studio was created to provide many of the capabilities of commercial industrial trend software in a fast, easy-to-use application for everyday troubleshooting and process analysis.
 
 PLC Trend Studio is built using the following open-source projects:
@@ -33,6 +49,7 @@ PLC Trend Studio is built using the following open-source projects:
 - **PyLogix** – Allen-Bradley Ethernet/IP communications - [PyLogix](https://github.com/dmroeder/pylogix)
 - **NumPy** – Numerical data processing - [NumPy](https://numpy.org/)
 - **Pandas** – CSV handling and data processing - [Pandas](https://pandas.pydata.org/)
+- **PyInstaller** – PyInstaller bundles a Python application and all its dependencies into a single package. – [PyInstaller](https://github.com/pyinstaller/pyinstaller)
 
 Special thanks to the developers and contributors of these projects for making them available to the community.
 
