@@ -126,7 +126,7 @@ pip install -r requirements.txt
 Build the Windows executable:
 
 ```bash
-pyinstaller --onefile --console PLC_TrendStudio_V6.3.py
+pyinstaller --onefile --console PLC_TrendStudio_V7.0.py
 ```
 
 PLC Trend Studio was created to provide many of the capabilities of commercial industrial trend software in a fast, easy-to-use application for everyday troubleshooting and process analysis.
