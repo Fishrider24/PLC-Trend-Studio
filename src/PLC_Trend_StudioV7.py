@@ -28,6 +28,7 @@ def readPLCTags(ipAddress, nameOfTag, dataFileName, commandQueue, liveQueue):
     dataWriter() to write them to .csv files.  Adjust time.sleep() to change
     the sampling time."""
     connected = False
+    reconnecting = False
     while True:
         try:
             with PLC() as comm:
@@ -264,12 +265,16 @@ class MainWindow(QtWidgets.QMainWindow):
         loadWorkspace = QtGui.QAction("Load Workspace...", self)
         saveWorkspace = QtGui.QAction("Save Workspace", self)
         saveWorkspaceAs = QtGui.QAction("Save Workspace As...", self)
+        saveSnapshot = QtGui.QAction("Save Snapshot...", self)
         fileMenu.addAction(loadWorkspace)
         fileMenu.addAction(saveWorkspace)
         fileMenu.addAction(saveWorkspaceAs)
+        fileMenu.addSeparator()
+        fileMenu.addAction(saveSnapshot)
         loadWorkspace.triggered.connect(lambda checked: self.loadWorkspace())
         saveWorkspace.triggered.connect(lambda checked: self.saveWorkspace())
         saveWorkspaceAs.triggered.connect(lambda checked: self.saveWorkspaceAs())
+        saveSnapshot.triggered.connect(self.saveSnapshot)
     # Settings Menu
         settingsMenu = menubar.addMenu("Settings")
         axisScaling = QtGui.QAction("Axis Scaling...", self)
@@ -281,6 +286,9 @@ class MainWindow(QtWidgets.QMainWindow):
         settingsMenu.addAction(addTagAction)
         addTagAction.triggered.connect(self.addPLCTag)
         self.plotitem = self.graphWidget.getPlotItem()
+        self.plotitem.ctrlMenu = None
+        self.graphWidget.scene().contextMenu = None
+        self.plotitem.vb.setMenuEnabled(False)
     # Add Curser
         self.cursorLine = pg.InfiniteLine(
             angle=90,
@@ -298,6 +306,12 @@ class MainWindow(QtWidgets.QMainWindow):
         )
     # Time Menu
         viewMenu = menubar.addMenu("View")
+        self.gridAction = QtGui.QAction("Grid", self)
+        self.gridAction.setCheckable(True)
+        viewMenu.addAction(self.gridAction)
+        self.gridAction.triggered.connect(
+            self.toggleGrid
+        )
         self.liveModeAction = QtGui.QAction("Live Mode", self)
         self.liveModeAction.setCheckable(True)
         self.liveModeAction.setChecked(True)
@@ -321,8 +335,10 @@ class MainWindow(QtWidgets.QMainWindow):
         hr1.triggered.connect(lambda: self.setTimeWindow(3600))
        # Existing left axis
         self.leftView = self.plotitem.vb
+        self.leftView.setMenuEnabled(False)
        # Create a second ViewBox for the right axis
         self.rightView = pg.ViewBox()
+        self.rightView.setMenuEnabled(False)
         self.plotitem.scene().addItem(self.rightView)
         self.plotitem.showAxis('right')
         self.plotitem.getAxis('right').linkToView(self.rightView)
@@ -505,6 +521,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def addAxis(self, side, column):
 
         vb = pg.ViewBox()
+        vb.setMenuEnabled(False)
         ax = pg.AxisItem(side)
         if side == "left":
             ax.setPen('orange')
@@ -674,6 +691,14 @@ class MainWindow(QtWidgets.QMainWindow):
                 padding=0
             )
 
+    def toggleGrid(self):
+        enabled = self.gridAction.isChecked()
+        self.plotitem.showGrid(
+            x=enabled,
+            y=enabled,
+            alpha=0.3
+        )
+
     def moveCurve(self, curveIndex, newAxis):
 
         info = self.curves[curveIndex]
@@ -827,6 +852,7 @@ class MainWindow(QtWidgets.QMainWindow):
             action.setCheckable(True)
             if self.curves[curveIndex]["axis"] == axis:
                 action.setChecked(True)
+            actions[action] = axis
         moveMenu.addSeparator()
         newAxisAction = moveMenu.addAction(
             "New Right Axis..."
@@ -951,6 +977,20 @@ class MainWindow(QtWidgets.QMainWindow):
             filename += ".json"
         self.workspaceFile = filename
         self.saveWorkspace(filename)
+
+    def saveSnapshot(self):
+        filename, _ = QtWidgets.QFileDialog.getSaveFileName(
+            self,
+            "Save Snapshot",
+            "",
+            "PNG (*.png)"
+        )
+        if not filename:
+            return
+        if not filename.lower().endswith(".png"):
+            filename += ".png"
+        pixmap = self.grab()
+        pixmap.save(filename)
 
     def clearGraph(self):
     # Remove curves from the graph
