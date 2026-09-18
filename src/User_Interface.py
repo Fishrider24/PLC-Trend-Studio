@@ -2,11 +2,15 @@ import time
 import datetime
 from pylogix import PLC
 import csv
+import pickle
 import pandas as pd
 import numpy as np
 import os.path
 from paths import DATA_PATH, PREVIOUS_TAGS_PATH
 
+#def tagName():
+#    x = input(' Enter Tag name: ')
+#    return(x)
 
 def splitBitTag(tag):
     """
@@ -18,14 +22,19 @@ def splitBitTag(tag):
     Normal tags return:
         ("TagName", None)
     """
+
     if "." not in tag:
         return tag, None
+
     base, bit = tag.rsplit(".", 1)
+
     if bit.isdigit():
         return base, int(bit)
+
     return tag, None
 
 def tagName():
+
     x = input('Enter Tag name: ')
     if x == 'n':
         print('done')
@@ -71,10 +80,26 @@ def usePreviousTag(ipAddress):
     else:
         print('No Previous Tags Found')
         return(False)
+            
+
+
+#def tagCheck(ipAddress, nameOfTag):
+#    """Checks if tag, nameOfTag, exists in PLC at IP address
+#    returns True if it exists.  Prints error and returns false
+#    if an error occurs"""
+#    with PLC(ipAddress) as comm:
+#        ret = comm.Read(nameOfTag)
+#        if ret.Status == 'Success':
+#            return True
+#        else:
+#            print(ret.Status)
+#            return False
 
 def tagCheck(ipAddress, nameOfTag):
     flag = False
+
     listOfTag = []
+
     while flag != True:
         baseTag, bit = splitBitTag(nameOfTag)
         with PLC(ipAddress) as comm:
@@ -90,9 +115,11 @@ def tagCheck(ipAddress, nameOfTag):
             print(ret.Status)
             print('!Tag name was not found. Try Again.')
             nameOfTag = tagName()
+
     with open('PreviousTags.csv', 'w', encoding='UTF8') as f:
             writer = csv.writer(f)
             writer.writerow(listOfTag)
+
     return(listOfTag)
 
 def dataFileCreation(ipAddress, nameOfTag):
@@ -133,3 +160,11 @@ def savePreviousTags(ipAddress, tagList):
         PreviousTag,
         index=False
     )
+
+#x = tagName()
+#print(x)
+
+#x = tagName()
+#dataFileName = "{}_{}.csv" .format(x, datetime.datetime.now())
+#print(dataFileName)
+
