@@ -1,4 +1,4 @@
-# PLC Trend Studio V6.3
+# PLC Trend Studio V7.0
 PLC Trend Studio is a Windows application for real-time monitoring, trending, and troubleshooting of Allen-Bradley PLCs over Ethernet/IP.
 
 Designed for controls engineers and maintenance technicians, it provides live trending, historical data review, unlimited configurable Y-axes, automatic CSV logging, and workspace management in a lightweight desktop application.
@@ -14,6 +14,66 @@ Features
 🏷 Per-PLC tag lists and workspaces
 ✔ Supports analog, digital, and bit-level PLC tags
 🚀 Optimized in-memory buffering for responsive live trending
+
+PLC Trend Studio V7 Overview
+
+Version 7 represents the largest architectural update since the project began. The focus has shifted from adding graphing features to improving usability, reliability, and workflow.
+
+New Features
+Workspace-Based Configuration
+Save and load complete workspaces.
+Workspaces now store trace configuration including:
+PLC tags
+Display names
+Axis assignments
+Line styles
+Decimal display settings
+Visibility
+Axis scaling
+Save Workspace As
+Create multiple named workspaces for different machines or troubleshooting sessions.
+Custom Display Names
+Assign user-friendly names to traces while preserving the original PLC tag.
+Hovering over a trace displays the actual PLC tag name.
+Per-Trace Decimal Formatting
+Individual traces can display different decimal precision.
+Added Auto formatting to intelligently remove unnecessary trailing zeros.
+Per-Trace Line Styles
+Solid
+Dashed
+Dotted
+Dash-Dot
+Enhanced Trace Manager
+Added Style column.
+Added color indicators.
+Right-click menu now manages:
+Axis assignment
+Line style
+Decimal precision
+Display name
+Hide/Show
+Remove tag
+Interactive Cursor
+Hold Ctrl to enable a vertical cursor.
+Displays trace values at the selected timestamp.
+Works in both Live and History modes.
+Communication Improvements
+Automatic PLC connection verification during startup.
+User is prompted to re-enter an IP address if the PLC cannot be reached.
+Automatic reconnect after communication loss.
+Communication interruptions create visible gaps in the trend instead of connecting data across outages.
+PLC connection status is shown in the application status bar.
+Reliability Improvements
+Invalid PLC tags are detected before being added.
+REAL arrays and floating-point values (including negative values) are fully supported.
+Live and historical Boolean values are now consistently displayed as 0 and 1.
+Improved startup with an empty graph and dynamic tag loading.
+User Interface Improvements
+Cleaner startup workflow.
+Graph starts with only Left and Right 1 axes.
+Additional axes are created automatically as needed.
+Improved Trace Manager layout.
+Numerous performance and code cleanup improvements.
 
 In Settings, you can adjust scaling for the y-axis and add new PLC tags.  On traces, you can delete tags, change line style, move to different y-axis and hide/show data for tags.
 
