@@ -1,4 +1,4 @@
-# PLC Trend Studio V7.0
+# PLC Trend Studio V7.3
 PLC Trend Studio is a Windows application for real-time monitoring, trending, and troubleshooting of Allen-Bradley PLCs over Ethernet/IP.
 
 ## Trademarks
@@ -22,7 +22,44 @@ PLC Trend Studio V7 Overview
 
 Version 7 represents the largest architectural update since the project began. The focus has shifted from adding graphing features to improving usability, reliability, and workflow.
 
-New Features
+Version 7.3 Changes:
+
+Performance
+
+Major CPU usage reduction through event-driven graph updates.
+Added PyQtGraph clipping and automatic downsampling for improved rendering performance.
+Reduced unnecessary graph redraws, Trace Manager updates, and pen updates.
+
+Data Collection
+
+Added configurable Data Collection settings:
+PLC sample interval
+Live history stored in RAM
+Display update interval
+Settings are saved between sessions.
+
+User Interface
+
+Added 15-minute and 20-minute viewing windows.
+Grid enabled by default.
+Added live Time/Cursor display in the status bar.
+Cursor now displays No Data when positioned outside available data.
+
+Configuration
+
+Added persistent settings.json for application settings.
+Application now remembers:
+Last PLC IP
+Data collection settings
+Continued migration away from legacy configuration methods.
+
+Code Cleanup
+
+Removed obsolete and legacy code.
+Continued transition to a cleaner, event-driven architecture.
+Improved overall maintainability and responsiveness.
+
+V7 Features
 
 Workspace-Based Configuration
 Save and load complete workspaces.
@@ -129,7 +166,7 @@ pip install -r requirements.txt
 Build the Windows executable:
 
 ```bash
-pyinstaller --onefile --console PLC_Trend_StudioV7.0.py
+python -m PyInstaller --onefile --icon=C:\path\to\file\pts2.png --windowed PLC_Trend_StudioV7.3.py
 ```
 
 PLC Trend Studio was created to provide many of the capabilities of commercial industrial trend software in a fast, easy-to-use application for everyday troubleshooting and process analysis.
