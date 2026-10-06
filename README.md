@@ -1,5 +1,5 @@
 # PLC Trend Studio V7.3
-PLC Trend Studio is a Windows application for real-time monitoring, trending, and troubleshooting of Allen-Bradley PLCs over Ethernet/IP.
+PLC Trend Studio is a Windows(or linux if you run it with python but not tested) application for real-time monitoring, trending, and troubleshooting of Allen-Bradley PLCs over Ethernet/IP.
 
 ## Trademarks
 Allen-Bradley, ControlLogix, CompactLogix, and Studio 5000 are trademarks of Rockwell Automation, Inc. This project is not affiliated with, sponsored by, or endorsed by Rockwell Automation.
