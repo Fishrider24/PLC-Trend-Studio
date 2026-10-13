@@ -89,7 +89,7 @@ def tagCheck(ipAddress, nameOfTag):
             print('!Tag name was not found. Try Again.')
             nameOfTag = tagName()
 
-def dataFileCreation(ipAddress, nameOfTag):
+def dataFileCreation(ipAddress, nameOfTag, sessionID):
     ipFolder = ipAddress.replace(".", "_")
     folder = os.path.join(
         DATA_PATH,
@@ -98,7 +98,7 @@ def dataFileCreation(ipAddress, nameOfTag):
     os.makedirs(folder, exist_ok=True)
     filename = "{}_{}.csv".format(
         nameOfTag,
-        time.strftime("%b%d%H%M%S")
+        sessionID
     )
     dataFileName = os.path.join(
         folder,
