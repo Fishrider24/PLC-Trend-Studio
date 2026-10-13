@@ -1,151 +1,59 @@
-# PLC Trend Studio V7.3
-PLC Trend Studio is a Windows(or linux if you run it with python but not tested) application for real-time monitoring, trending, and troubleshooting of Allen-Bradley PLCs over Ethernet/IP.
-
+# PLC Trend Studio
+PLC Trend Studio is a Windows desktop application for real-time monitoring, historical analysis, and troubleshooting of Allen-Bradley PLCs over EtherNet/IP. (It can also run under Python on Linux, although this configuration has not been fully tested.)
+Designed for controls engineers and maintenance technicians, PLC Trend Studio provides fast live trending, historical session playback, automatic data logging, and flexible graphing tools in a lightweight desktop application.
 ## Trademarks
-Allen-Bradley, ControlLogix, CompactLogix, and Studio 5000 are trademarks of Rockwell Automation, Inc. This project is not affiliated with, sponsored by, or endorsed by Rockwell Automation.
-## Overview
-Designed for controls engineers and maintenance technicians, it provides live trending, historical data review, unlimited configurable Y-axes, automatic CSV logging, and workspace management in a lightweight desktop application.
+Allen-Bradley, ControlLogix, CompactLogix, Studio 5000, and EtherNet/IP are trademarks of Rockwell Automation, Inc.
+PLC Trend Studio is an independent open-source project and is not affiliated with, sponsored by, or endorsed by Rockwell Automation.
 
-Features
-📈 Real-time PLC tag trending
-⚡ Live and History viewing modes
-📊 Unlimited independently scaled Y-axes
-🎨 Configurable trace colors and line styles
-💾 Automatic CSV data logging
-🗂 Workspace save/load
-🔄 Automatic restoration of axis layouts and trace assignments
-🏷 Per-PLC tag lists and workspaces
-✔ Supports analog, digital, and bit-level PLC tags
-🚀 Optimized in-memory buffering for responsive live trending
+Major Features
+- 📈 Real-time PLC tag trending
+- 🕘 Live Review Mode for scrolling back through recorded data while remaining connected
+- 📂 Historical Session playback using .pts session files
+- 📊 Unlimited independently scaled Y-axes
+- 🏷 Display names, line styles, decimal formatting, and visibility control
+- 💾 Automatic CSV data logging
+- 🗂 Workspace save/load
+- 📁 Historical session management
+- 🖧 Friendly PLC names and PLC Manager
+- ✔ Supports controller tags, program-local tags, analog values, digital values, and individual bits
+- ⚡ Optimized graph rendering for responsive live trending
 
-PLC Trend Studio V7 Overview
+What's New in Version 8
+Version 8 represents the largest feature expansion since PLC Trend Studio was created. The application has evolved from a live PLC trend viewer into a complete live and historical troubleshooting tool.
+Major Changes
+- Added Historical Session Mode with support for complete session playback using .pts session files.
+- Added Live Review Mode for reviewing recorded data while remaining connected to the PLC.
+- Redesigned startup workflow with Live/Historical selection, friendly PLC names, recent PLC list, and PLC Manager.
+- Added Connected startup screen with quick access to Open Workspace and Add PLC Tag.
+- Added unlimited right-side Y-axes with independent scaling and automatic axis restoration.
+- Expanded trace management with display names, line styles, decimal formatting, visibility control, and axis reassignment.
+- Added Workspace management to save and restore complete graph layouts.
+- Improved Add PLC Tag with program-local tag support, automatic display names, axis selection, and live PLC validation.
+- Added configurable data collection settings with persistent startup values.
+- Improved graph performance, rendering stability, and live responsiveness.
 
-Version 7 represents the largest architectural update since the project began. The focus has shifted from adding graphing features to improving usability, reliability, and workflow.
-
-Version 7.3 Changes:
-
-Performance
-
-Major CPU usage reduction through event-driven graph updates.
-Added PyQtGraph clipping and automatic downsampling for improved rendering performance.
-Reduced unnecessary graph redraws, Trace Manager updates, and pen updates.
-
-Data Collection
-
-Added configurable Data Collection settings:
-PLC sample interval
-Live history stored in RAM
-Display update interval
-Settings are saved between sessions.
-
-User Interface
-
-Added 15-minute and 20-minute viewing windows.
-Grid enabled by default.
-Added live Time/Cursor display in the status bar.
-Cursor now displays No Data when positioned outside available data.
-
-Configuration
-
-Added persistent settings.json for application settings.
-Application now remembers:
-Last PLC IP
-Data collection settings
-Continued migration away from legacy configuration methods.
-
-Code Cleanup
-
-Removed obsolete and legacy code.
-Continued transition to a cleaner, event-driven architecture.
-Improved overall maintainability and responsiveness.
-
-V7 Features
-
-Workspace-Based Configuration
-Save and load complete workspaces.
-
-Workspaces now store trace configuration including:
-
-PLC tags
-
-Display names
-
-Axis assignments
-
-Line styles
-
-Decimal display settings
-
-Visibility
-
-Axis scaling
-
-Save Workspace As, 
-Create multiple named workspaces for different machines or troubleshooting sessions.
-
-Custom Display Names
-Assign user-friendly names to traces while preserving the original PLC tag.
-Hovering over a trace displays the actual PLC tag name.
-
-Per-Trace Decimal Formatting
-Individual traces can display different decimal precision.
-Added Auto formatting to intelligently remove unnecessary trailing zeros.
-
-Per-Trace Line Styles
-Solid
-Dashed
-Dotted
-Dash-Dot
-
-Enhanced Trace Manager, 
-Added Style column.
-Added color indicators.
-
-Right-click menu now manages:
-
-Axis assignment
-
-Line style
-
-Decimal precision
-
-Display name
-
-Hide/Show
-
-Remove tag
-
-Interactive Cursor, 
-Hold Ctrl to enable a vertical cursor.
-Displays trace values at the selected timestamp.
-Works in both Live and History modes.
-
-Communication Improvements
-Automatic PLC connection verification during startup.
-User is prompted to re-enter an IP address if the PLC cannot be reached.
-Automatic reconnect after communication loss.
-Communication interruptions create visible gaps in the trend instead of connecting data across outages.
-PLC connection status is shown in the application status bar.
-
-Reliability Improvements
-Invalid PLC tags are detected before being added.
-REAL arrays and floating-point values (including negative values) are fully supported.
-Live and historical Boolean values are now consistently displayed as 0 and 1.
-Improved startup with an empty graph and dynamic tag loading.
-
-User Interface Improvements
-Cleaner startup workflow.
-Graph starts with only Left and Right 1 axes.
-Additional axes are created automatically as needed.
-
-Improved Trace Manager layout.
-Numerous performance and code cleanup improvements.
-
-In Settings, you can adjust scaling for the y-axis and add new PLC tags.  On traces, you can delete tags, change line style, move to different y-axis and hide/show data for tags.
+Trace Management
+Settings allow you to:
+- Configure Y-axis scaling
+- Add PLC tags
+- Adjust data collection settings
+The Trace Manager allows you to:
+- Move traces between axes
+- Change line styles
+- Rename display names
+- Adjust decimal precision
+- Hide/Show traces
+- Remove traces
 
 <img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/setting.png" width="200">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/trace.png" width="200">
 
-In View, you can change the time window you are in 30secs, 1,2,5,10,30 minutes and 1 hour.  You can drag farther and it will load data from the csv files.  Currently it stores 30 minutes of data in ram.  View also have the toggle for live mode.  Workspace will save the layout (axis, scaling, tags, line format) in a file that is tied to the ip address of the PLC.  Load it in after you start your graph.
+View Menu
+The View menu provides:
+- Time windows from 30 seconds to 1 hour
+- Live Review Mode
+- Grid display
+- Live Mode toggle
+Dragging the graph automatically loads older CSV data for review while maintaining the live connection.
 
 <img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/views.png" width="200">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="https://github.com/Fishrider24/PLC-Trend-Studio/blob/main/screenshots/workspaces.png" width="200">
 
@@ -166,7 +74,7 @@ pip install -r requirements.txt
 Build the Windows executable:
 
 ```bash
-python -m PyInstaller --onefile --icon=C:\path\to\file\pts2.png --windowed PLC_Trend_StudioV7.3.py
+python -m PyInstaller --onefile --icon=C:\path\to\file\pts2.png --windowed PLC_Trend_StudioV8.py
 ```
 
 PLC Trend Studio was created to provide many of the capabilities of commercial industrial trend software in a fast, easy-to-use application for everyday troubleshooting and process analysis.
@@ -180,6 +88,7 @@ PLC Trend Studio is built using the following open-source projects:
 - **NumPy** – Numerical data processing - [NumPy](https://numpy.org/)
 - **Pandas** – CSV handling and data processing - [Pandas](https://pandas.pydata.org/)
 - **PyInstaller** – PyInstaller bundles a Python application and all its dependencies into a single package. – [PyInstaller](https://github.com/pyinstaller/pyinstaller)
+- **Pillow (PIL)** – Image processing and screenshot support – https://python-pillow.org/
 
 Special thanks to the developers and contributors of these projects for making them available to the community.
 
