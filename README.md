@@ -7,6 +7,10 @@ PLC Trend Studio is an independent open-source project and is not affiliated wit
 
 Major Features
 - 📈 Real-time PLC tag trending
+- 🔎 PLC Tag Browser with instant search and filtering by tag name or data type
+- ☑️ Multi-tag selection with persistent checkboxes, allowing users to search, select, and add multiple tags at once
+- 🧩 UDT and Array Browser for exploring structured tags, array elements, and individual bits
+- ⚡ Background PLC tag database loading keeps the application responsive while downloading tags
 - 🕘 Live Review Mode for scrolling back through recorded data while remaining connected
 - 📂 Historical Session playback using .pts session files
 - 📊 Unlimited independently scaled Y-axes
@@ -17,6 +21,14 @@ Major Features
 - 🖧 Friendly PLC names and PLC Manager
 - ✔ Supports controller tags, program-local tags, analog values, digital values, and individual bits
 - ⚡ Optimized graph rendering for responsive live trending
+
+What's New in Version 8.1
+- V8.1 brings a tag browser.
+- Show a loading message while the PLC tag database downloads.
+- Display matching tags and their data types and automatically filter results while typing.
+- Search by partial names, such as motor, speed, or fault.
+- Select multiple tags using checkboxes, keep checked tags selected while performing additional searches and add all selected tags in one operation.
+- Allows you to enter a UDT or Array, then a browser window pops up to allow you to select what tags you want out of those.
 
 What's New in Version 8
 Version 8 represents the largest feature expansion since PLC Trend Studio was created. The application has evolved from a live PLC trend viewer into a complete live and historical troubleshooting tool.
